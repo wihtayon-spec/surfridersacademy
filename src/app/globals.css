@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — Surfriders Academy
+   Palette: ocean black, deep navy, sand, white, cyan highlight,
+   with a restrained warm sunrise accent used sparingly.
+   ============================================================ */
+:root {
+  --ocean-black: #0a1420;
+  --deep-navy: #0f2942;
+  --navy-800: #143855;
+  --sand: #f5efe3;
+  --sand-200: #ece3d2;
+  --white: #ffffff;
+  --cyan: #2fa8c4;
+  --cyan-bright: #47c6e0;
+  --sunrise: #c9772e;
+  --foreground: #0a1420;
+  --background: #ffffff;
+}
+
+@theme inline {
+  --color-ocean: var(--ocean-black);
+  --color-navy: var(--deep-navy);
+  --color-navy-800: var(--navy-800);
+  --color-sand: var(--sand);
+  --color-sand-200: var(--sand-200);
+  --color-cyan: var(--cyan);
+  --color-cyan-bright: var(--cyan-bright);
+  --color-sunrise: var(--sunrise);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.glass {
+  background: rgba(10, 20, 32, 0.55);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan-bright);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* SIGNATURE: the "swell line" tide-chart divider */
+.swell-line { width: 100%; height: 48px; overflow: hidden; color: var(--cyan); opacity: 0.9; }
+.swell-line svg { display: block; width: 100%; height: 100%; }
+.swell-line path { stroke: currentColor; fill: none; stroke-width: 2; }
+@keyframes swell-drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.swell-anim { animation: swell-drift 14s linear infinite; }
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.rise-in { animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+.hero-wash {
+  background: linear-gradient(180deg, rgba(10,20,32,0.35) 0%, rgba(10,20,32,0.45) 45%, rgba(10,20,32,0.82) 100%);
+}
+
+/* Subtle film-grain texture for dark sections — adds editorial depth
+   without reading as decoration. Very low opacity by design. */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.photo-ocean {
+  background:
+    radial-gradient(120% 80% at 70% 10%, rgba(71,198,224,0.25), transparent 55%),
+    linear-gradient(180deg, #12324f 0%, #0c2035 55%, #081521 100%);
+}
+.photo-sunrise {
+  background:
+    radial-gradient(90% 70% at 20% 20%, rgba(201,119,46,0.35), transparent 60%),
+    linear-gradient(180deg, #163a58 0%, #0d2338 60%, #081521 100%);
+}
+.photo-sand {
+  background:
+    radial-gradient(100% 80% at 50% 0%, rgba(245,239,227,0.9), transparent 60%),
+    linear-gradient(180deg, #ece3d2 0%, #ddd0b8 100%);
+}
