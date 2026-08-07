@@ -67,7 +67,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Divider />      <Divider />
+      <Divider />
 
       {/* What to expect */}
       <Section className="bg-sand !max-w-none sm:!py-24">
