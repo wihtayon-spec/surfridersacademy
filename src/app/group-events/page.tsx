@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Section, SectionHeading, Divider, CTABand } from "@/components/Section";
 import Button from "@/components/Button";
-import PricingCard from "@/components/PricingCard";
+import LessonCard from "@/components/LessonCard";
 import BgPhoto from "@/components/BgPhoto";
-import { getProduct, cta, photos } from "@/config/site";
+import { lessonCards, cta, photos } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Group & Corporate Surf Events in Huntington Beach",
@@ -19,8 +19,7 @@ const groupPoints = [
 ];
 
 export default function GroupEventsPage() {
-  const corporate = getProduct("corporate");
-  const group = getProduct("group");
+  const groupOffers = lessonCards.filter((lesson) => ["group", "corporate"].includes(lesson.id));
 
   return (
     <>
@@ -48,10 +47,10 @@ export default function GroupEventsPage() {
           <div>
             <SectionHeading eyebrow="Group Logistics" title="Group events, handled without the stress" />
             <div className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2">
-              {groupPoints.map((p) => (
-                <div key={p.title}>
-                  <h3 className="font-display text-lg text-ocean">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ocean/65">{p.body}</p>
+              {groupPoints.map((point) => (
+                <div key={point.title}>
+                  <h3 className="font-display text-lg text-ocean">{point.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ocean/65">{point.body}</p>
                 </div>
               ))}
             </div>
@@ -65,9 +64,16 @@ export default function GroupEventsPage() {
       <Divider />
 
       <Section>
-        <div className="grid gap-6 sm:grid-cols-2 lg:max-w-3xl">
-          {group && <PricingCard product={group} />}
-          {corporate && <PricingCard product={corporate} />}
+        <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2">
+          {groupOffers.map((lesson) => (
+            <LessonCard
+              key={lesson.id}
+              title={lesson.title}
+              forWho={lesson.forWho}
+              blurb={lesson.blurb}
+              productId={lesson.productId}
+            />
+          ))}
         </div>
       </Section>
 
