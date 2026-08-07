@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import { Section, SectionHeading, StatBar, Divider, CTABand } from "@/components/Section";
 import LessonCard from "@/components/LessonCard";
-import PricingCard from "@/components/PricingCard";
 import { ReviewsGrid } from "@/components/Testimonials";
 import FaqAccordion from "@/components/FaqAccordion";
 import Button from "@/components/Button";
@@ -10,16 +9,11 @@ import {
   lessonCards,
   whyChooseUs,
   expectSteps,
-  products,
   photos,
   founder,
 } from "@/config/site";
 
 export default function Home() {
-  const premiumPackages = products.filter((p) =>
-    ["private", "vip", "pkg-3", "corporate"].includes(p.id)
-  );
-
   return (
     <>
       <Hero />
@@ -47,7 +41,7 @@ export default function Home() {
           title="A lesson built for exactly where you're starting from"
           body="Whichever way you learn best, every lesson starts with safety and ends with a wave."
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-10 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {lessonCards.map((l) => (
             <LessonCard key={l.id} title={l.title} forWho={l.forWho} blurb={l.blurb} productId={l.productId} />
           ))}
@@ -73,21 +67,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Premium packages */}
-      <Section>
-        <SectionHeading
-          eyebrow="Premium Experiences"
-          title="For those who want it done exactly right"
-          body="High-touch options for private guests, families, and groups who want more."
-        />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {premiumPackages.map((p) => (
-            <PricingCard key={p.id} product={p} />
-          ))}
-        </div>
-      </Section>
-
-      <Divider />
+      <Divider />      <Divider />
 
       {/* What to expect */}
       <Section className="bg-sand !max-w-none sm:!py-24">
