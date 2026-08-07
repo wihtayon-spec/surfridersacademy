@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Section, SectionHeading, Divider, CTABand } from "@/components/Section";
+import { Section, SectionHeading, CTABand } from "@/components/Section";
 import Button from "@/components/Button";
-import PricingCard from "@/components/PricingCard";
 import BgPhoto from "@/components/BgPhoto";
-import { getProduct, cta, photos } from "@/config/site";
+import { cta, photos } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Kids & Family Surf Lessons in Huntington Beach",
@@ -19,8 +18,6 @@ const familyPoints = [
 ];
 
 export default function KidsFamiliesPage() {
-  const kidsProduct = getProduct("kids-family");
-
   return (
     <>
       <div className="relative overflow-hidden bg-ocean py-24 sm:py-28">
@@ -61,15 +58,7 @@ export default function KidsFamiliesPage() {
         </div>
       </Section>
 
-      <Divider />
-
-      {kidsProduct && (
-        <Section className="max-w-md">
-          <PricingCard product={kidsProduct} />
-        </Section>
-      )}
-
-      <CTABand />
+      <CTABand />      <CTABand />
     </>
   );
 }
