@@ -41,7 +41,7 @@ export default function LessonCard({
           href="/contact"
           className="text-sm font-semibold text-cyan underline-offset-4 transition-colors group-hover:underline"
         >
-          Book →
+          {product?.price === null ? "Request a Quote →" : "Book →"}
         </Link>
       </div>
     </div>
