@@ -7,7 +7,7 @@ import { lessonCards, expectSteps, whyChooseUs, business, photos, founder } from
 export const metadata: Metadata = {
   title: "Surf Lessons in Huntington Beach, CA",
   description:
-    "Private, group, kids, family, and premium surf lessons in Huntington Beach. Equipment included, beginner-friendly, safety first.",
+    "Private and group surf lessons plus custom corporate and hotel experiences in Huntington Beach. Equipment included, beginner-friendly, safety first.",
 };
 
 export default function LessonsPage() {
@@ -29,7 +29,7 @@ export default function LessonsPage() {
       </div>
 
       <Section>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {lessonCards.map((l) => (
             <LessonCard key={l.id} title={l.title} forWho={l.forWho} blurb={l.blurb} productId={l.productId} />
           ))}
