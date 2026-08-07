@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Section, CTABand } from "@/components/Section";
-import PricingCard from "@/components/PricingCard";
+import LessonCard from "@/components/LessonCard";
 import { ServiceSchema } from "@/components/Schema";
-import { products } from "@/config/site";
+import { lessonCards } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Pricing — Surf Lesson Rates in Huntington Beach",
   description:
-    "Clear, upfront pricing for private, group, kids, family, and premium surf lessons in Huntington Beach, CA.",
+    "Straightforward pricing for private and group surf lessons, plus custom corporate and hotel experiences in Huntington Beach, CA.",
 };
 
 export default function PricingPage() {
@@ -19,20 +19,27 @@ export default function PricingPage() {
           <p className="eyebrow text-cyan-bright">Pricing</p>
           <h1 className="font-display mt-3 text-4xl text-white sm:text-5xl">Simple, honest pricing</h1>
           <p className="mx-auto mt-5 max-w-lg text-base text-sand/80 sm:text-lg">
-            Every price includes coaching, board, and wetsuit. No surprise fees on the beach.
+            Every lesson includes coaching, board, and wetsuit. Corporate and hotel experiences are quoted around
+            your group.
           </p>
         </div>
       </div>
 
       <Section>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((p) => (
-            <PricingCard key={p.id} product={p} />
+        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {lessonCards.map((lesson) => (
+            <LessonCard
+              key={lesson.id}
+              title={lesson.title}
+              forWho={lesson.forWho}
+              blurb={lesson.blurb}
+              productId={lesson.productId}
+            />
           ))}
         </div>
         <p className="mt-8 text-center text-xs text-ocean/45">
-          Prices shown are current standard rates and may vary by season or group size. Corporate and large-group
-          rates are custom — request a quote for exact pricing.
+          Private lessons are $169 per person. Group lessons are $89 per person. Corporate and hotel experiences
+          receive a custom quote.
         </p>
       </Section>
 
