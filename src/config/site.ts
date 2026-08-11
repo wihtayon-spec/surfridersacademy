@@ -37,7 +37,7 @@ export const business = {
 
   // Google Maps place / directions link (TODO: real link)
   mapsUrl: "https://maps.google.com/?q=Huntington+Beach+Pier",
-  url: "https://www.example.com", // TODO: real production domain
+  url: "https://ayonecosystem.com",
 
   social: {
     instagram: "https://instagram.com/surfridersacademy",
